@@ -1,0 +1,65 @@
+---------------PRIMERA CONSULTA-----------------------------------------------
+select
+	 medico.nombre_medi as medico,
+	 to_char(descipcion_cita.fecha_cita,'YYYY') as año, 
+	 count (descipcion_cita.id_medi) as citas
+from 
+	medico inner join descipcion_cita on medico.id_medi=descipcion_cita.id_medi 
+group by  medico.nombre_medi, 
+	to_char(descipcion_cita.fecha_cita,'YYYY')
+	order by medico.nombre_medi DESC
+------------HISTORICO DE ATENCIONES POR AÑO DE DOCTORES-----------------------
+----------------------------------------------------------------------------------------------------
+
+--------------SEGUNDA CONSULTA---------------------------------------------------
+do $$
+declare
+	registros record; --Para acceder a los datos del cursor
+	nocancelada cursor for select  id_admin, 
+	count (agendacancelada_ag),to_char(agendamiento.fechacita_ag,'YYYY')
+	from agendamiento where agendacancelada_ag like '%No%'   -----VA A BBUSCAR DEL ATRIBUTO AGENDA CANCELADA LAS QUE EMPICE N PPOR NO.
+	group by  id_admin, to_char(agendamiento.fechacita_ag,'YYYY'); 
+	sicancelada cursor for select  id_admin, 
+	count (agendarealizada_ag),to_char(agendamiento.fechacita_ag,'YYYY')
+	from agendamiento where agendarealizada_ag like '%Si%'
+	group by  id_admin, to_char(agendamiento.fechacita_ag,'YYYY');
+begin
+	for registros in nocancelada
+	loop
+		raise notice 
+		'
+		Doctor: %, 
+		Fecha: %
+		Citas cancelada: %',
+		registros.id_admin, registros.to_char,registros.count;
+	end loop;
+	for registros in sicancelada
+	loop
+		raise notice 
+		'
+		Doctor: %, 
+		Fecha: %
+		CItas realizadas: %',
+		registros.id_admin, registros.to_char,registros.count;
+	end loop;
+end $$
+language 'plpgsql';
+---------HISTORICO DE CITAS AGENDADAS Y CITAS CANCELADAS------------------------
+
+------------------------TERCERA CONSULTA------------------------------
+select  count(translado_a_sala.id_part)as cantidad, to_char(fecha_part,'YYYY')as fecha,sala_de_maternidad.id_mat as sala 
+from parto inner join translado_a_sala on parto.id_part = translado_a_sala.id_part
+	inner join sala_de_maternidad on sala_de_maternidad.id_mat = translado_a_sala.id_mat 
+	group by to_char(fecha_part,'YYYY'), sala_de_maternidad.id_mat
+-----------HISTORICO DE PARTO POR AÑO EN CADA SALA DE PARTO------------
+
+--------------------CUARTA CONSULTA------------------------------------
+select count(resultados.fecha_exam), nombre_tipo, to_char(examenes.fecha_exam, 'YYYY') fecha
+from  examenes 
+	inner join resultados on resultados.fecha_exam = examenes.fecha_exam 
+	inner join tipo_de_examenes on tipo_de_examenes.id_tipo = resultados.id_tipo
+	group by nombre_tipo, to_char(examenes.fecha_exam, 'YYYY')
+	order by to_char(examenes.fecha_exam, 'YYYY')
+--------------------HISTORICO DE EXAMENES POR AÑO-----------------------
+
+

@@ -1,0 +1,35 @@
+------------------------TRIGGER----------------------------------------------
+CREATE OR REPLACE FUNCTION ft_restringir()
+RETURNS TRIGGER AS $$
+DECLARE
+	ingresos bigint:= 0;
+	registros record;
+	--Consultar el dato
+	datos_cursor cursor for select count((EXTRACT(week FROM fechaingreso_mat))) from translado_a_sala
+		inner join sala_de_maternidad on sala_de_maternidad.id_mat = translado_a_sala.id_mat
+		where sala_de_maternidad.id_mat = new.id_mat
+		group by sala_de_maternidad.id_mat, (EXTRACT(week FROM fechaingreso_mat)) 
+		order by (EXTRACT(week FROM fechaingreso_mat));
+BEGIN
+	FOR registros IN datos_cursor
+	loop
+		if (registros.count > 3) then --Los tres puestos por semana de la sala ya estan ocupados
+			raise exception 'La sala no se puede ocupar por que ya esta ocupada por el máximo permitido';
+		end if;
+	END LOOP;
+RETURN NEW;
+END $$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER tr_restringir
+BEFORE INSERT OR UPDATE ON translado_a_sala
+FOR EACH ROW
+EXECUTE PROCEDURE ft_restringir()
+--------------------------Una sala de parto no puede ser utilizada mas de 3 veces en la misma semana-----------------
+
+-------PROBAR EL TRIGGER-------------------------------------
+insert into translado_a_sala(id_mat,id_part,fechaingreso_mat)
+values('1','2','01-08-2005'),
+('2','4','02-08-2022'),
+('1','4','03-08-2012'),
+('2','7','08-08-2022'); 
