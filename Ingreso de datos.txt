@@ -1,0 +1,290 @@
+/*==============================================================*/
+/* Ingreso de datos Administrativo                              */
+/*==============================================================*/
+insert into Administrativo(Id_admin,CedulaAD,NombreAD,ApellidoAD,DireccionAD,CorreoAD,TelefonoAD,
+ProfesionAD)
+values ('1','1354243451','Nahomy','Cedeno','Avenida Eloy Alfaro','nahomy.cedeno123@hotmail.com','0923424221','Abogada'),
+('2','133484321','Maria','Aveiga','Urbanizacion Marina Blue','maria.aveiga78@hotmail.com','0998766971','Gerente'),
+('3','1332423532','Fernando','Arteaga','Avenida Flavio Reyes','fernandoart98@hotmail.com','0934324244','Contador'),
+('4','1323267883', 'Sofia','Garcia','Urbanizacion Manta','sofiagarcia51@hotmail.es','0948265245','Trabajadora Social'),
+('5','1358478887','David','Palacios','Avenida 28','david.palacios@outlook.com','0938264521','Recursos Humano'),
+('6','1321125973','Alisson','Andrade','La Aurora','alisson-andrade3@outlook.es','0938461654','Director'),
+('7','1324335389','Juan','Delgado','San Pedro','juan-delgado7@hotmail.com','0937461421','Secretaria');
+/*==============================================================*/
+/* Ingreso de datos Madre                                       */
+/*==============================================================*/
+insert into Madre(Id_madre,Id_admin,CedulaMD,NombreMD,ApellidoMD,NacionalidadMD,TipoSangreMD,FechanacimientoMD,CorreoMD,Telefono1MD,Telefono2MD,DireccionMD) values 
+('1','1','1319247322','Carmen','Cevallos','Ecuatoriana','O+','12-6-1985','carmencevallos@gmail.com','0963254548','0969423126','Cdla. Lomas el porvenir'),
+('2','2','1829581235','Melany','Guzman','Ecuatoriana','O+','23-4-1998','guzman2@gmail.com','0993827374','0984738293','Centro'),
+('3','3','1390823242','Karla','Riviera','Ecuatoriana','A+','2-11-1982','riverakarla3@gmail.com','096391823','096502812','Tarqui'),
+('4','1','1319058233','Juana','Forlan','Ecuatoriana','B+','1-2-1990','forlagoolman@gmail.com','09634351','0969123523','Centro'),
+('5','1','1319236622','Roberta','Pazmino','Ecuatoriana','O+','12-6-1985','robertpazzz@gmail.com','0963254256','0969422983','Centro'),
+('6','5','1319293855','Cristina','Arcos','Ecuatoriana','O-','5-8-1995','cristinaaaa@gmail.com','0963256232','0969422002','Aurora'),
+('7','6','1319292739','Pamela','Chucuece','Ecuatoriana','AB+','2-2-2000','pamelaaa2232@gmail.com','0963259292','0969428332','Tarqui'),
+('8','1','1313957322','Juli','Zambrano','Ecuatoriana','O+','19-06-1985','julizambra@gmail.com','0955466748','0969403126','Cdla. Lomas el porvenir'),
+('9','5','1356721235','Melanie','Willian','Ecuatoriana','O+','26-06-1998','malanie2@gmail.com','0995674854','0980838293','Centro'),
+('10','3','1394583242','Carla','Rivera','Ecuatoriana','A+','04-10-1982','riveraca@gmail.com','0965674743','096912812','Tarqui 2'),
+('11','2','1395753563','Justina','Suarez','Ecuatoriana','B+','01-04-1990','Justinasuar12@gmail.com','0964547475','0968223523','Centro Sur'),
+('12','3','1359899642','Carol','Pazmino','Ecuatoriana','O+','29-03-1985','Carolpazmino@gmail.com','096754755','0969432983','Centro'),
+('13','4','1308643875','Cristhina','Delgado','Ecuatoriana','O-','13-12-1995','cristhinadelga@gmail.com','0946345732','096934002','Aurora 2'),
+('14','7','1346789479','Michelle','Parraga','Ecuatoriana','AB+','12-06-2000','michellepa2232@gmail.com','0943255782','094338332','Tarqui 1');
+/*==============================================================*/
+/* Ingreso de datos Agendamiento                                */
+/*==============================================================*/
+insert into Agendamiento(fechacita_ag,id_admin,fechainicio_ag,fechaagenda_ag,hora_ag,doctor_ag,agendarealizada_ag,agendacancelada_ag)
+values ('03-11-2008','3','01-10-2008','30-10-2008','08:00','Bryan Cedeño','Si',''),
+('05-11-2008','3','02-10-2008','01-11-2002','19:00','Bryan Cedeño','Si',''),
+('04-11-2008','2','05-08-2008','09-09-2006','13:00','Sofia Cedeno','','Si'),
+('03-12-2008','3','01-10-2008','30-10-2007','16:00','Bryan Cedeño','Si',''),
+('11-11-2008','1','02-10-2008','01-11-2007','15:00','Robin Cedeño','Si',''),
+('21-11-2008','2','25-10-2008','09-09-2008','10:00','Sofia Cedeno','','Si'),
+('29-11-2008','2','29-10-2008','19-09-2008','07:00','Sofia Cedeno','','No'),
+('26-11-2008','4','20-10-2008','16-11-2008','10:00','Sofia Cedeno','','No'),
+('06-12-2008','5','21-10-2008','17-09-2008','10:00','Sofia Cedeno','','No'),
+('05-12-2008','7','15-10-2008','18-09-2008','12:00','Bryan Cedeño','','No'),
+('01-12-2008','2','17-10-2008','18-11-2008','13:00','Sofia Cedeno','','No'),
+('07-12-2008','3','08-10-2008','18-10-2008','14:00','Bryan Cedeño','','No'),
+('02-12-2008','2','02-10-2008','19-11-2008','08:00','Gerardo Moran','','No'),
+('08-12-2008','2','01-10-2008','19-11-2008','10:00','Gerardo Moran','','No'),
+('11-12-2008','2','20-10-2008','20-11-2008','16:00','Gerardo Moran','','No'),
+('12-12-2008','3','27-10-2008','21-11-2008','19:00','Gerardo Moran','','No'),
+('13-11-2008','2','29-10-2008','19-10-2008','09:00','Sofia Cedeno','','No'),
+('14-11-2008','4','15-10-2008','16-10-2008','17:00','Sofia Cedeno','Si',''),
+('15-12-2008','5','18-10-2008','17-11-2008','11:00','Sofia Cedeno','Si',''),
+('20-12-2008','7','29-10-2008','18-11-2008','19:00','Bryan Cedeño','Si',''),
+('22-12-2008','2','01-10-2008','18-11-2008','16:00','Sofia Cedeno','Si',''),
+('24-12-2008','3','09-10-2008','18-12-2008','13:00','Bryan Cedeño','Si',''),
+('26-12-2008','2','07-10-2008','19-11-2008','08:00','Gerardo Moran','Si',''),
+('27-12-2008','6','24-10-2008','19-12-2008','15:00','Gerardo Moran','Si',''),
+('29-12-2008','2','28-11-2008','20-11-2008','09:00','Gerardo Moran','Si',''),
+('28-12-2008','5','28-11-2008','21-11-2008','15:00','Gerardo Moran','Si','');
+/*==============================================================*/
+/* Ingreso de datos Medico                                      */
+/*==============================================================*/
+insert into Medico(id_medi,cedula_medi,nombre_medi,apellido_medi,direccion_medi,correo_medi,telefono_medi,especialidad)
+values ('1','1394285399','Gerardo','Moran','Centro','med.gerardo@gmail.com','0999259553','Dermatologo'),
+('2','1394280642','Juan','Cabezas','Centro','med.cabezon@gmail.com','0994923842','General'),
+('3','1384373422','Carlos','Tubay','Tarqui','med.Tubaytercero@gmail.com','099984723','Oftanmologo'),
+('4','1399503255','Emiliano','Lopez','Aurora','med.lopezemi@gmail.com','0999223002','Pediatra'),
+('5','1332456658','Sofia','Cedeno','Aurora','sofiacede@gmail.com','0993465547','Ginecologia'),
+('6','1333245789','Bryan','Cedeno','Los Esteros','bryanced@gmail.com','0923456457','Dermatologo');
+/*==============================================================*/
+/* Ingreso de datos Descripcion cita                            */
+/*==============================================================*/
+insert into descipcion_cita(fecha_cita,id_madre,id_medi,prescripcion_cita)
+values ('06-06-2016','4','1','Tomar Atropina tópica	y Paracetamol'),
+('03-11-2007','2','3','Cada noche tomar una Ergocalciferol'),
+('01-02-2006','1','1','Disolver Bisacodil'),
+('02-02-2010','5','3','Tomar finalin forte'),
+('02-02-2008','3','6','Tomar finalin forte'),
+('17-08-2015','4','1','Tomar Atropina tópica	y Paracetamol'),
+('06-05-2007','2','3','Cada noche tomar una Ergocalciferol'),
+('14-02-2009','1','1','Disolver Bisacodil'),
+('11-06-2005','5','3','Tomar finalin forte'),
+('05-12-2012','3','6','Tomar finalin forte'),
+('01-11-2006','4','1','Tomar Atropina tópica	y Paracetamol'),
+('10-04-2005','2','3','Cada noche tomar una Ergocalciferol'),
+('12-08-2009','1','1','Disolver Bisacodil'),
+('03-08-2007','5','3','Tomar finalin forte'),
+('22-08-2015','3','6','Tomar finalin forte'),
+('02-12-2007','4','1','Tomar Atropina tópica	y Paracetamol'),
+('12-04-2005','2','3','Cada noche tomar una Ergocalciferol'),
+('13-08-2009','1','1','Disolver Bisacodil');
+/*==============================================================*/
+/* Ingreso de datos Examenes                                    */
+/*==============================================================*/
+insert into examenes(fecha_exam,fecha_cita,descripcion_exam)
+values('05-12-2007','03-11-2007','Ecografia'),
+('11-04-2007','01-02-2006','Ecografia'),
+('13-08-2007','02-02-2010','Ecografia'),
+('05-08-2007','02-02-2008','Ecografia'),
+('19-08-2016','06-06-2016','Ecografia'),
+('05-12-2012','13-08-2009','Ecografia'),
+('11-06-2005','01-02-2006','Ecografia'),
+('14-02-2009','02-02-2010','Ecografia'),
+('06-05-2007','02-02-2008','Ecografia'),
+('17-08-2015','06-06-2016','Ecografia'),
+('01-11-2006','03-11-2007','Ecografia'),
+('10-04-2005','01-02-2006','Ecografia'),
+('12-08-2009','02-02-2010','Ecografia'),
+('03-08-2007','02-02-2008','Ecografia'),
+('22-08-2015','06-06-2016','Ecografia'),
+('12-04-2005','01-02-2006','Ecografia'),
+('13-08-2009','02-02-2010','Ecografia');
+/*==============================================================*/
+/* Ingreso de datos Insumo                                      */
+/*==============================================================*/
+insert into insumo(fecha_ins,fecha_cita,vestimentaquirurgica,materialpresionarterial,materialbioseguridad,instrumentoquirurgico)
+values('26-01-2006','01-02-2006','Pantalones','Estetoscopio','Batas','Pinza Judo-Allis'),
+('11-08-2010','03-11-2007','Guantes','Brazalete de tensiometro','Mascarillas','Pinzas Crile curvas y rectas'),
+('25-12-2010','02-02-2010','Gorros','Estetoscopio','alcohol','Separador de Farabeuf');
+/*==============================================================*/
+/* Ingreso de datos Tipo de examenes                            */
+/*==============================================================*/
+insert into tipo_de_examenes(id_tipo,nombre_tipo)
+values('1','Sangre'),
+('2','Orina'),
+('3','Heces'),
+('4','Ecografia');
+/*==============================================================*/
+/* Ingreso de datos Resultados                                  */
+/*==============================================================*/
+insert into Resultados(fecha_exam,id_tipo,resultados)
+values('11-04-2007','1','Bebé estable'),
+('13-08-2007','1','Bebé estable'),
+('05-12-2007','3','Falta de vitaminas'),
+('05-08-2007','2','Falta de vitaminas'),
+('2007-12-05','2','Bebé estable'),
+('2007-04-11','2','Bebé estable'),
+('2007-08-13','2','Bebé estable'),
+('05-12-2007','1','Bebé estable'),
+('11-04-2007','4','Bebé estable'),
+('13-08-2007','4','Bebé estable'),
+('05-08-2007','4','Falta de vitaminas'),
+('19-08-2016','4','Falta de vitaminas'),
+('05-12-2012','4','Falta de vitaminas'),
+('11-06-2005','4','Bebé estable'),
+('14-02-2009','4','Falta de vitaminas'),
+('06-05-2007','4','Bebé estable'),
+('17-08-2015','4','Falta de vitaminas'),
+('01-11-2006','4','Falta de vitaminas'),
+('10-04-2005','4','Falta de vitaminas'),
+('12-08-2009','4','Bebé estable'),
+('03-08-2007','4','Bebé estable'),
+('22-08-2015','4','Falta de vitaminas'),
+('12-04-2005','4','Falta de vitaminas'),
+('13-08-2009','4','Bebé estable');
+/*==============================================================*/
+/* Ingreso de datos Mantenimiento                               */
+/*==============================================================*/
+insert into mantenimiento(id_mant,nombre_mant,apellido_mant,reparacion_mant,fecha_mant,equipoutilizado)
+values('1','Joshua','Zambrano','Equipos medicos','15-05-2008','Equipo biomedico'),
+('2','Sofia','Bravo','Camillas','30-01-2008','Equipo de Fisioterapia');
+/*==============================================================*/
+/* Ingreso de datos Limpieza                                    */
+/*==============================================================*/
+select* from limpieza;
+insert into limpieza(id_lim,cedula_lim,nombre_lim,apellido_lim,telefono_lim,correo_lim,direccion_lim,area_lim,especialidad_lim)
+values('1','1312343259','Pedro','Villavicencio','0937145143','pedrovilla1@hotmail.com','Baños','Sanitaria','Mantenimiento suelo'),
+('2','1313325443','Maria','Montes','0938465631','mariamon0@outlook.com','Quirofano','Partos','Limpieza General'),
+('3','1316807643','Pablo','Montesdeoca','0937465724','pablo.montesdeoca32@outlook.es','Incubadora','Sala de incubacion','Desinfeccion solidas'),
+('4','1313358969','Mayra','Vera','0948475615','mayra-vera@hotmail.com','Sala de maternidad','Sala','Limpieza General');
+/*==============================================================*/
+/* Ingreso de datos Parto                                       */
+/*==============================================================*/
+insert into parto(id_part,id_madre,id_mant,id_medi,id_lim,obstreta_part,pediatra_part,neonatologo,cantidad,fecha_part,sexo_part,peso_part,novedad_part)
+values('1','6','2','4','2','Maria Palacios','Rosita Mendoza','Felipe Castro','2','09-11-2009','Masculino','3.1 kg','Sin complicaciones'),
+('2','2','1','3','4','Melany Intriago','Majito Mendoza','Fanny Calderon','1','29-11-2009','Femenino','3.5 kg','Sin complicaciones'),
+('3','4','2','4','1','Valeria Alcivar','Rosita Castillo','Felipe Castro','1','30-11-2009','Femenino','3.2 kg','Prematuro'),
+('4','7','2','1','1','Melany Intriago','Majito Mendoza','Juliana Garcia','2','30-11-2009','Masculino','2.9 kg','Dificultades al no querer sacar el bebe pero al final todo salio bien'),
+('5','5','1','5','3','Valeria Alcivar','Belen Hidalgo','Julian Alvares','1','02-12-2009','Femenino','3.0 kg','Sin complicaciones'),
+('6','1','1','2','4','Maria Palacios','Belen Hidalgo','Fanny Calderon','1','08-12-2009','Femenino','3.6 kg','No lloraba al inicio y hubo reanimacion, se encuentra fuera de peligro'),
+('7','1','1','6','2','Valeria Alcivar','Majito Mendoza','Juliana Garcia','1','25-12-2009','Femenino','3.3 kg','Sin complicaciones'),
+('8','10','2','5','2','Maria Palacios','Rosita Mendoza','Felipe Castro','1','17-12-2010','Masculino','3.1 kg','Sin complicaciones, parto normal'),
+('9','9','1','5','4','Melany Intriago','Majito Mendoza','Fanny Calderon','1','07-02-2011','Maculino','3.2 kg','Sin complicaciones, parto normal'),
+('10','11','2','5','4','Valeria Alcivar','Rosita Castillo','Felipe Castro','1','01-01-2012','Maculino','2.2 kg','Prematuro'),
+('11','8','2','6','3','Melany Intriago','Majito Mendoza','Juliana Garcia','1','19-07-2012','Masculino','2.7 kg','Parto por cesarea todo un exito'),
+('12','12','1','6','3','Valeria Alcivar','Belen Hidalgo','Julian Alvares','1','12-06-2012','Maculino','3.5 kg','Sin complicaciones'),
+('13','10','1','5','4','Maria Palacios','Belen Hidalgo','Fanny Calderon','1','28-11-2013','Maculino','3.8 kg','No lloraba al inicio y hubo reanimacion, se encuentra fuera de peligro'),
+('14','13','1','6','3','Valeria Alcivar','Majito Mendoza','Juliana Garcia','1','07-07-2012','Maculino','3.1 kg','Sin complicaciones, parto normal');
+/*==============================================================*/
+/* Ingreso de datos Quirofano                                  */
+/*==============================================================*/
+insert into quirofano(id_quir,id_part,temperatura_quir,humedad_quir,condicion_quir)
+values('1','2','Excelente 21° centigrados','35%','Buena'),
+('2','5','Estable 25° centigrados','50%','Regular');
+/*==============================================================*/
+/* Ingreso de datos Sala de maternidad                          */
+/*==============================================================*/
+insert into sala_de_maternidad(id_mat,id_mant,id_lim,condiciones_mat,visitas_mat,prescipcion_mat)
+values('1','2','4','Limpia','10 AM - 17PM','No hacer bulla'),
+('2','1','1','Limpia','11AM - 6PM','A quirofano dentro de 12 horas'),
+('4','1','1','En traslado','08AM - 14PM','A quirofano en 20 minutos'),
+('3','2','4','Ocupado','12 AM - 14PM','No hacer bulla'),
+('5','2','1','Ocupado','08AM - 13PM','No hacer bulla'),
+('6','1','1','Ocupado','11AM - 12AM','A quirofano dentro de 1 hora'),
+('7','1','3','En traslado','08AM - 14PM','A quirofano en 15 minutos'),
+('8','2','2','Ocupado','12 AM - 14PM','No hacer bulla');
+/*==============================================================*/
+/* Ingreso de datos Incubadora                                  */
+/*==============================================================*/
+insert into incubadora(id_incb,id_lim,id_mant,fechaingreso_incb,visitas_incb,tratamiento_incb,condiciones_incb)
+values('1','3','1','30-11-2009','14PM - 18PM','Trataiento de suplementos y cuidados de apoyo','Estable, fuera de peligro');
+/*==============================================================*/
+/* Ingreso de datos Neonato a incubadora                        */
+/*==============================================================*/
+insert into neonato_a_incubadora(id_part,id_incb)
+values('1','1');
+/*==============================================================*/
+/* Ingreso de datos Traslado a sala                             */
+/*==============================================================*/
+insert into translado_a_sala(id_mat,id_part,fechaingreso_mat)
+values('1','2','05-08-2005'),
+('2','4','06-08-2022'),
+('1','4','07-08-2022'),
+('2','7','08-08-2022'),
+('2','1','09-08-2022'),
+('2','5','10-08-2004'),
+('1','1','11-08-2004'),
+('1','3','12-08-2006'),
+('1','5','13-08-2006'),
+('1','6','14-08-2006'),
+('1','7','15-08-2006'),
+('2','2','16-08-2005'),
+('2','3','17-08-2005'),
+('2','6','18-08-2005'),
+('3','1','19-08-2005'),
+('3','2','20-08-2012'),
+('3','3','22-08-2009'),
+('3','4','19-08-201'),
+('3','5','11-08-2012'),
+('3','6','15-08-2007'),
+('3','7','14-08-2008'),
+('4','1','11-08-2008'),
+('4','2','12-08-2008'),
+('4','3','13-08-2008'),
+('4','4','08-08-2008'),
+('4','5','04-08-2009'),
+('4','6','03-08-2009'),
+('4','7','04-08-2009'),
+('5','2','02-08-2009'),
+('5','4','01-08-2009'),
+('5','1','01-08-2009'),
+('6','7','01-08-2009'),
+('6','1','09-08-2013'),
+('7','5','13-08-2013'),
+('8','1','21-08-2013'),
+('1','8','23-08-2013'),
+('2','11','28-08-2013'),
+('2','14','02-08-2013'),
+('1','14','05-08-2013'),
+('1','12','05-08-2018'),
+('1','13','11-08-2017'),
+('1','9','16-08-2015'),
+('1','10','28-08-2015'),
+('2','10','23-08-2011'),
+('2','9','04-08-2014'),
+('2','8','01-08-2012'),
+('3','10','09-08-2014'),
+('3','14','14-08-2010'),
+('3','13','01-08-2010'),
+('3','12','09-08-2014'),
+('3','11','01-08-2012'),
+('3','9','03-08-2011'),
+('3','8','16-08-2011'),
+('4','8','21-08-2011'),
+('4','10','19-08-2019'),
+('4','14','16-08-2015'),
+('4','12','26-08-2008'),
+('4','11','25-08-2005'),
+('4','13','11-08-2008'),
+('5','9','21-08-2011'),
+('5','11','07-08-2012'),
+('5','14','03-04-2017'),
+('6','13','02-03-2018'),
+('6','12','10-04-2018'),
+('7','9','11-02-2018'),
+('8','12','13-11-2018');
+
+
+

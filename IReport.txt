@@ -1,0 +1,4 @@
+select extract (year from parto.fecha_part) as fecha 
+from parto
+where extract (year from parto.fecha_part) > '2009'
+order by extract (year from parto.fecha_part) desc

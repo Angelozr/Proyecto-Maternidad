@@ -1,0 +1,432 @@
+/*==============================================================*/
+/* DBMS name:      PostgreSQL 8                                 */
+/* Created on:     19/11/2022 23:01:22                          */
+/*==============================================================*/
+
+
+drop table ADMINISTRATIVO;
+
+drop table AGENDAMIENTO;
+
+drop table DESCIPCION_CITA;
+
+drop table EXAMENES;
+
+drop table INCUBADORA;
+
+drop table INSUMO;
+
+drop table LIMPIEZA;
+
+drop table MADRE;
+
+drop table MANTENIMIENTO;
+
+drop table MEDICO;
+
+drop table NEONATO_A_INCUBADORA;
+
+drop table PARTO;
+
+drop table QUIROFANO;
+
+drop table RESULTADOS;
+
+drop table SALA_DE_MATERNIDAD;
+
+drop table SE_REUNE_LA_MADRE_Y_DOCTOR;
+
+drop table SOLICITA;
+
+drop table SOLICITUD_DE_EXAMEN;
+
+drop table TIPO_DE_EXAMENES;
+
+drop table TRANSLADO_A_SALA;
+
+/*==============================================================*/
+/* Table: ADMINISTRATIVO                                        */
+/*==============================================================*/
+create table ADMINISTRATIVO (
+   ID_ADMIN             INT4                 not null,
+   CEDULAAD             VARCHAR(10)          null,
+   NOMBREAD             CHAR(50)             null,
+   APELLIDOAD           CHAR(50)             null,
+   DIRECCIONAD          CHAR(50)             null,
+   CORREOAD             CHAR(50)             null,
+   TELEFONOAD           CHAR(10)             null,
+   PROFESIONAD          CHAR(50)             null,
+   constraint PK_ADMINISTRATIVO primary key (ID_ADMIN)
+);
+
+/*==============================================================*/
+/* Table: AGENDAMIENTO                                          */
+/*==============================================================*/
+create table AGENDAMIENTO (
+   FECHACITA_AG         DATE                 not null,
+   ID_ADMIN             INT4                 null,
+   FECHAINICIO_AG       DATE                 null,
+   FECHAAGENDA_AG       DATE                 null,
+   HORA_AG              TIME                 null,
+   DOCTOR_AG            CHAR(30)             null,
+   AGENDAREALIZADA_AG   CHAR(30)             null,
+   AGENDACANCELADA_AG   CHAR(30)             null,
+   constraint PK_AGENDAMIENTO primary key (FECHACITA_AG)
+);
+
+/*==============================================================*/
+/* Table: DESCIPCION_CITA                                       */
+/*==============================================================*/
+create table DESCIPCION_CITA (
+   FECHA_CITA           DATE                 not null,
+   ID_MADRE             INT4                 null,
+   ID_MEDI              INT4                 null,
+   PRESCRIPCION_CITA    CHAR(100)            null,
+   constraint PK_DESCIPCION_CITA primary key (FECHA_CITA)
+);
+
+/*==============================================================*/
+/* Table: EXAMENES                                              */
+/*==============================================================*/
+create table EXAMENES (
+   FECHA_EXAM           DATE                 not null,
+   FECHA_CITA           DATE                 null,
+   DESCRIPCION_EXAM     CHAR(200)            null,
+   constraint PK_EXAMENES primary key (FECHA_EXAM)
+);
+
+/*==============================================================*/
+/* Table: INCUBADORA                                            */
+/*==============================================================*/
+create table INCUBADORA (
+   ID_INCB              INT4                 not null,
+   ID_LIM               INT4                 null,
+   ID_MANT              INT4                 null,
+   FECHAINGRESO_INCB    DATE                 null,
+   VISITAS_INCB         CHAR(70)             null,
+   TRATAMIENTO_INCB     CHAR(90)             null,
+   CONDICIONES_INCB     CHAR(100)            null,
+   constraint PK_INCUBADORA primary key (ID_INCB)
+);
+
+/*==============================================================*/
+/* Table: INSUMO                                                */
+/*==============================================================*/
+create table INSUMO (
+   FECHA_INS            DATE                 not null,
+   FECHA_CITA           DATE                 null,
+   VESTIMENTAQUIRURGICA CHAR(40)             null,
+   MATERIALPRESIONARTERIAL CHAR(40)             null,
+   MATERIALBIOSEGURIDAD CHAR(40)             null,
+   INSTRUMENTOQUIRURGICO CHAR(40)             null,
+   constraint PK_INSUMO primary key (FECHA_INS)
+);
+
+/*==============================================================*/
+/* Table: LIMPIEZA                                              */
+/*==============================================================*/
+create table LIMPIEZA (
+   ID_LIM               INT4                 not null,
+   CEDULA_LIM           VARCHAR(10)          null,
+   NOMBRE_LIM           CHAR(30)             null,
+   APELLIDO_LIM         CHAR(30)             null,
+   TELEFONO_LIM         CHAR(10)             null,
+   CORREO_LIM           CHAR(80)             null,
+   DIRECCION_LIM        CHAR(70)             null,
+   AREA_LIM             CHAR(40)             null,
+   ESPECIALIDAD_LIM     CHAR(20)             null,
+   constraint PK_LIMPIEZA primary key (ID_LIM)
+);
+
+/*==============================================================*/
+/* Table: MADRE                                                 */
+/*==============================================================*/
+create table MADRE (
+   ID_MADRE             INT4                 not null,
+   ID_ADMIN             INT4                 null,
+   CEDULAMD             VARCHAR(10)          null,
+   NOMBREMD             CHAR(50)             null,
+   APELLIDOMD           CHAR(30)             null,
+   NACIONALIDADMD       CHAR(30)             null,
+   TIPOSANGREMD         CHAR(10)             null,
+   FECHANACIMIENTOMD    DATE                 null,
+   CORREOMD             CHAR(50)             null,
+   TELEFONO1MD          CHAR(10)             null,
+   TELEFONO2MD          CHAR(10)             null,
+   DIRECCIONMD          CHAR(40)             null,
+   constraint PK_MADRE primary key (ID_MADRE)
+);
+
+/*==============================================================*/
+/* Table: MANTENIMIENTO                                         */
+/*==============================================================*/
+create table MANTENIMIENTO (
+   ID_MANT              INT4                 not null,
+   NOMBRE_MANT          CHAR(40)             null,
+   APELLIDO_MANT        CHAR(40)             null,
+   REPARACION_MANT      CHAR(70)             null,
+   FECHA_MANT           DATE                 null,
+   EQUIPOUTILIZADO      CHAR(30)             null,
+   constraint PK_MANTENIMIENTO primary key (ID_MANT)
+);
+
+/*==============================================================*/
+/* Table: MEDICO                                                */
+/*==============================================================*/
+create table MEDICO (
+   ID_MEDI              INT4                 not null,
+   CEDULA_MEDI          VARCHAR(10)          null,
+   NOMBRE_MEDI          CHAR(30)             null,
+   APELLIDO_MEDI        CHAR(30)             null,
+   TELEFONO_MEDI        CHAR(10)             null,
+   DIRECCION_MEDI       CHAR(70)             null,
+   CORREO_MEDI          CHAR(100)            null,
+   ESPECIALIDAD         CHAR(70)             null,
+   constraint PK_MEDICO primary key (ID_MEDI)
+);
+
+/*==============================================================*/
+/* Table: NEONATO_A_INCUBADORA                                  */
+/*==============================================================*/
+create table NEONATO_A_INCUBADORA (
+   ID_PART              INT4                 not null,
+   ID_INCB              INT4                 not null,
+   constraint PK_NEONATO_A_INCUBADORA primary key (ID_PART, ID_INCB)
+);
+
+/*==============================================================*/
+/* Table: PARTO                                                 */
+/*==============================================================*/
+create table PARTO (
+   ID_PART              INT4                 not null,
+   ID_MADRE             INT4                 null,
+   ID_MANT              INT4                 null,
+   ID_MEDI              INT4                 null,
+   ID_LIM               INT4                 null,
+   OBSTRETA_PART        CHAR(80)             null,
+   PEDIATRA_PART        CHAR(80)             null,
+   NEONATOLOGO          CHAR(80)             null,
+   CANTIDAD             CHAR(10)             null,
+   FECHA_PART           DATE                 null,
+   SEXO_PART            CHAR(10)             null,
+   PESO_PART            CHAR(30)             null,
+   NOVEDAD_PART         CHAR(100)            null,
+   constraint PK_PARTO primary key (ID_PART)
+);
+
+/*==============================================================*/
+/* Table: QUIROFANO                                             */
+/*==============================================================*/
+create table QUIROFANO (
+   ID_QUIR              INT4                 not null,
+   ID_PART              INT4                 null,
+   TEMPERATURA_QUIR     CHAR(80)             null,
+   HUMEDAD_QUIR         CHAR(50)             null,
+   CONDICION_QUIR       CHAR(100)            null,
+   constraint PK_QUIROFANO primary key (ID_QUIR)
+);
+
+/*==============================================================*/
+/* Table: RESULTADOS                                            */
+/*==============================================================*/
+create table RESULTADOS (
+   FECHA_EXAM           DATE                 not null,
+   ID_TIPO              CHAR(20)             not null,
+   RESULTADOS           CHAR(200)            null,
+   constraint PK_RESULTADOS primary key (FECHA_EXAM, ID_TIPO)
+);
+
+/*==============================================================*/
+/* Table: SALA_DE_MATERNIDAD                                    */
+/*==============================================================*/
+create table SALA_DE_MATERNIDAD (
+   ID_MAT               INT4                 not null,
+   ID_MANT              INT4                 null,
+   ID_LIM               INT4                 null,
+   CONDICIONES_MAT      CHAR(40)             null,
+   VISITAS_MAT          CHAR(50)             null,
+   PRESCIPCION_MAT      CHAR(50)             null,
+   constraint PK_SALA_DE_MATERNIDAD primary key (ID_MAT)
+);
+
+/*==============================================================*/
+/* Table: SE_REUNE_LA_MADRE_Y_DOCTOR                            */
+/*==============================================================*/
+create table SE_REUNE_LA_MADRE_Y_DOCTOR (
+   ID_MADRE             INT4                 not null,
+   FECHACITA_AG         DATE                 not null,
+   constraint PK_SE_REUNE_LA_MADRE_Y_DOCTOR primary key (ID_MADRE, FECHACITA_AG)
+);
+
+/*==============================================================*/
+/* Table: SOLICITA                                              */
+/*==============================================================*/
+create table SOLICITA (
+   FECHA_INS            DATE                 not null,
+   ID_MEDI              INT4                 not null,
+   constraint PK_SOLICITA primary key (FECHA_INS, ID_MEDI)
+);
+
+/*==============================================================*/
+/* Table: SOLICITUD_DE_EXAMEN                                   */
+/*==============================================================*/
+create table SOLICITUD_DE_EXAMEN (
+   FECHA_EXAM           DATE                 not null,
+   ID_MEDI              INT4                 not null,
+   constraint PK_SOLICITUD_DE_EXAMEN primary key (FECHA_EXAM, ID_MEDI)
+);
+
+/*==============================================================*/
+/* Table: TIPO_DE_EXAMENES                                      */
+/*==============================================================*/
+create table TIPO_DE_EXAMENES (
+   ID_TIPO              CHAR(20)             not null,
+   NOMBRE_TIPO          CHAR(50)             null,
+   constraint PK_TIPO_DE_EXAMENES primary key (ID_TIPO)
+);
+
+/*==============================================================*/
+/* Table: TRANSLADO_A_SALA                                      */
+/*==============================================================*/
+create table TRANSLADO_A_SALA (
+   ID_MAT               INT4                 not null,
+   ID_PART              INT4                 not null,
+   FECHAINGRESO_MAT     DATE                 null,
+   constraint PK_TRANSLADO_A_SALA primary key (ID_MAT, ID_PART)
+);
+
+alter table AGENDAMIENTO
+   add constraint FK_AGENDAMI_RELATIONS_ADMINIST foreign key (ID_ADMIN)
+      references ADMINISTRATIVO (ID_ADMIN)
+      on delete restrict on update restrict;
+
+alter table DESCIPCION_CITA
+   add constraint FK_DESCIPCI_RELATIONS_MADRE foreign key (ID_MADRE)
+      references MADRE (ID_MADRE)
+      on delete restrict on update restrict;
+
+alter table DESCIPCION_CITA
+   add constraint FK_DESCIPCI_RELATIONS_MEDICO foreign key (ID_MEDI)
+      references MEDICO (ID_MEDI)
+      on delete restrict on update restrict;
+
+alter table EXAMENES
+   add constraint FK_EXAMENES_RELATIONS_DESCIPCI foreign key (FECHA_CITA)
+      references DESCIPCION_CITA (FECHA_CITA)
+      on delete restrict on update restrict;
+
+alter table INCUBADORA
+   add constraint FK_INCUBADO_RELATIONS_LIMPIEZA foreign key (ID_LIM)
+      references LIMPIEZA (ID_LIM)
+      on delete restrict on update restrict;
+
+alter table INCUBADORA
+   add constraint FK_INCUBADO_RELATIONS_MANTENIM foreign key (ID_MANT)
+      references MANTENIMIENTO (ID_MANT)
+      on delete restrict on update restrict;
+
+alter table INSUMO
+   add constraint FK_INSUMO_RELATIONS_DESCIPCI foreign key (FECHA_CITA)
+      references DESCIPCION_CITA (FECHA_CITA)
+      on delete restrict on update restrict;
+
+alter table MADRE
+   add constraint FK_MADRE_RELATIONS_ADMINIST foreign key (ID_ADMIN)
+      references ADMINISTRATIVO (ID_ADMIN)
+      on delete restrict on update restrict;
+
+alter table NEONATO_A_INCUBADORA
+   add constraint FK_NEONATO__RELATIONS_INCUBADO foreign key (ID_INCB)
+      references INCUBADORA (ID_INCB)
+      on delete restrict on update restrict;
+
+alter table NEONATO_A_INCUBADORA
+   add constraint FK_NEONATO__RELATIONS_PARTO foreign key (ID_PART)
+      references PARTO (ID_PART)
+      on delete restrict on update restrict;
+
+alter table PARTO
+   add constraint FK_PARTO_RELATIONS_LIMPIEZA foreign key (ID_LIM)
+      references LIMPIEZA (ID_LIM)
+      on delete restrict on update restrict;
+
+alter table PARTO
+   add constraint FK_PARTO_RELATIONS_MADRE foreign key (ID_MADRE)
+      references MADRE (ID_MADRE)
+      on delete restrict on update restrict;
+
+alter table PARTO
+   add constraint FK_PARTO_RELATIONS_MANTENIM foreign key (ID_MANT)
+      references MANTENIMIENTO (ID_MANT)
+      on delete restrict on update restrict;
+
+alter table PARTO
+   add constraint FK_PARTO_RELATIONS_MEDICO foreign key (ID_MEDI)
+      references MEDICO (ID_MEDI)
+      on delete restrict on update restrict;
+
+alter table QUIROFANO
+   add constraint FK_QUIROFAN_RELATIONS_PARTO foreign key (ID_PART)
+      references PARTO (ID_PART)
+      on delete restrict on update restrict;
+
+alter table RESULTADOS
+   add constraint FK_RESULTAD_RELATIONS_TIPO_DE_ foreign key (ID_TIPO)
+      references TIPO_DE_EXAMENES (ID_TIPO)
+      on delete restrict on update restrict;
+
+alter table RESULTADOS
+   add constraint FK_RESULTAD_RELATIONS_EXAMENES foreign key (FECHA_EXAM)
+      references EXAMENES (FECHA_EXAM)
+      on delete restrict on update restrict;
+
+alter table SALA_DE_MATERNIDAD
+   add constraint FK_SALA_DE__RELATIONS_MANTENIM foreign key (ID_MANT)
+      references MANTENIMIENTO (ID_MANT)
+      on delete restrict on update restrict;
+
+alter table SALA_DE_MATERNIDAD
+   add constraint FK_SALA_DE__RELATIONS_LIMPIEZA foreign key (ID_LIM)
+      references LIMPIEZA (ID_LIM)
+      on delete restrict on update restrict;
+
+alter table SE_REUNE_LA_MADRE_Y_DOCTOR
+   add constraint FK_SE_REUNE_RELATIONS_AGENDAMI foreign key (FECHACITA_AG)
+      references AGENDAMIENTO (FECHACITA_AG)
+      on delete restrict on update restrict;
+
+alter table SE_REUNE_LA_MADRE_Y_DOCTOR
+   add constraint FK_SE_REUNE_RELATIONS_MADRE foreign key (ID_MADRE)
+      references MADRE (ID_MADRE)
+      on delete restrict on update restrict;
+
+alter table SOLICITA
+   add constraint FK_SOLICITA_RELATIONS_MEDICO foreign key (ID_MEDI)
+      references MEDICO (ID_MEDI)
+      on delete restrict on update restrict;
+
+alter table SOLICITA
+   add constraint FK_SOLICITA_RELATIONS_INSUMO foreign key (FECHA_INS)
+      references INSUMO (FECHA_INS)
+      on delete restrict on update restrict;
+
+alter table SOLICITUD_DE_EXAMEN
+   add constraint FK_SOLICITU_RELATIONS_MEDICO foreign key (ID_MEDI)
+      references MEDICO (ID_MEDI)
+      on delete restrict on update restrict;
+
+alter table SOLICITUD_DE_EXAMEN
+   add constraint FK_SOLICITU_RELATIONS_EXAMENES foreign key (FECHA_EXAM)
+      references EXAMENES (FECHA_EXAM)
+      on delete restrict on update restrict;
+
+alter table TRANSLADO_A_SALA
+   add constraint FK_TRANSLAD_RELATIONS_PARTO foreign key (ID_PART)
+      references PARTO (ID_PART)
+      on delete restrict on update restrict;
+
+alter table TRANSLADO_A_SALA
+   add constraint FK_TRANSLAD_RELATIONS_SALA_DE_ foreign key (ID_MAT)
+      references SALA_DE_MATERNIDAD (ID_MAT)
+      on delete restrict on update restrict;
+
